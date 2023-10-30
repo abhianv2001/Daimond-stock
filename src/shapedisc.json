@@ -1,0 +1,49 @@
+{
+    "shapedisc": {
+      "HT": {
+        "shape": "Heart",
+        "image": "assets/image/heart.png"
+      },
+      "OV": {
+        "shape": "Oval",
+        "image": "assets/image/oval.png"
+      },
+      "RAD": {
+        "shape": "Radiant",
+        "image": "assets/image/Radial.png"
+      },
+      "PEAR": {
+        "shape": "Pear",
+        "image": "assets/image/pear.png"
+      },
+      "EM": {
+        "shape": "Emerald",
+        "image": "assets/image/Emerald.png"
+      },
+      "MQ": {
+        "shape": "Marquise",
+        "image": "assets/image/Marquise.png"
+      },
+      "CMB": {
+        "shape": "Cushion",
+        "image": "assets/image/Cushion_modified_brilliants.png"
+      },
+      "AC": {
+        "shape": "Asscher ",
+        "image": "assets/image/Asscher.png"
+      },
+      "CB": {
+        "shape": "Cubic",
+        "image": "assets/image/Cubic.png"
+      },
+      "RD": {
+        "shape": "Round",
+        "image": "assets/image/Round.png"
+      },
+      "Other": {
+        "shape": "Other",
+        "image": "assets/image/no.png"
+      }
+    }
+  }
+  

@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Daimondlist from './Component/Daimonndlist/Daimondlist';
+import Daimondcard from './Component/Dashboard/Daimondcard';
+import Dashboard from './Component/Dashboard/Dashboard';
+import ApiState from './context/ApiState';
+import Loader from './Loader';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [loading, setloading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setloading(false);
+        }, 3000);
+    }, []);
+
+    return (
+        <ApiState>
+            <BrowserRouter>
+                {loading ? (
+                    <Loader />
+                ) : (
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/daimondcard" element={<Daimondcard />} />
+                        <Route
+                            path="/daimondcard/:category/:value"
+                            element={<Daimondcard />}
+                        />
+                        <Route path="/daimondlist" element={<Daimondlist />} />
+                        <Route path="/loader" element={null} />
+                    </Routes>
+                )}
+            </BrowserRouter>
+        </ApiState>
+    );
 }
 
 export default App;
