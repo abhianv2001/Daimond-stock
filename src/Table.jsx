@@ -26,17 +26,6 @@ function Table() {
       headerCheckboxSelectionFilteredOnly: true,
       checkboxSelection: true,
     },
-    {
-      field: "cert_url",
-      headerName: "Certificate",
-      sortable: true,
-      filter: true,
-      cellClass: 'hyperlinks',
-      cellRenderer: function (params) {
-        return <a href={params.data.cert_url} target="_blank">{params.value}</a>
-      }
-    },
-
     { field: "shape", sortable: true, filter: true, width: 120 },
     { field: "DiamondType", sortable: true, filter: true },
     { field: "color", sortable: true, filter: true },
@@ -57,6 +46,16 @@ function Table() {
       cellClass: 'hyperlinks',
       cellRenderer: function (params) {
         return <a href={params.data.video_url} target="_blank">{params.value}</a>
+      }
+    },
+    {
+      field: "cert_url",
+      headerName: "Certificate",
+      sortable: true,
+      filter: true,
+      cellClass: 'hyperlinks',
+      cellRenderer: function (params) {
+        return <a href={params.data.cert_url} target="_blank">{params.value}</a>
       }
     },
     { field: "depth_percent", sortable: true, filter: true },
@@ -84,9 +83,13 @@ function Table() {
   ]);
 
 
-
+  
   const sideBar = useMemo(() => {
     return {
+      hide: true,
+      pivot: false ,
+      suppressColumnsToolPanel: false,
+      
       toolPanels: [
         {
           id: 'columns',
@@ -103,11 +106,12 @@ function Table() {
             suppressColumnSelectAll: true,
             suppressColumnExpandAll: true,
             suppressColumnsToolPanel:false,
+            column:false,
           },
         },
       ],
-      defaultToolPanel: 'columns',
       suppressToolPanel: false,
+
     };
   }, []);
 

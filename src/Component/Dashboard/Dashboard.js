@@ -6,6 +6,7 @@ import { apiContext } from '../../context/ApiState';
 import Carat from './Carat';
 import Footer from '../../Footer'
 import Allcard from './Allcard';
+import MultiFilterComponent from './Example';
 
 
 function Dashboard() {
@@ -18,7 +19,7 @@ function Dashboard() {
     return (
         <>
             <Leftmenu />
-            <div class="pb-[0px]  sm:ml-[250px] relative">
+            <div class="mb-[150px]  sm:ml-[250px] relative">
                 <Allcard/>
                 <Shape />
                 <Color />

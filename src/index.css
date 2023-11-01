@@ -353,7 +353,7 @@ a {
 
   .main-card-item .daimond-card, .popular-item .daimond-card, .shape-item .daimond-card {
     width: 100%;
-    margin: 8px;
+    margin: 15px;
     padding: 10px;
     height: auto;
   }
@@ -366,11 +366,21 @@ a {
     width: 60%;
     margin-right: 10px;
   }
-  .card-bottom{
-    margin: auto;
+
+  .card-bottom {
+    margin: 8px;
   }
 }
 
+@media(max-width:320px){
+  .daimond-card .card-item {
+    display: block;
+  }
+  .daimond-card .card-item .image-block{
+    display: block;
+    width: 100%;
+  }
+}
 
 /* Sidebar styles */
 
@@ -723,6 +733,9 @@ button#toggle-sidebar-btn {
     font-size: 10px;
     margin-bottom: 2px;
   }
+  .carat-item .carat-outer .content .item {
+    line-height: 50px;
+  }
 
   .shape-item .shape-outer .content .item .text, .color-item .color-outer .content .item .text, .carat-item .carat-outer .content .item .text {
     font-size: 14px;
@@ -730,13 +743,12 @@ button#toggle-sidebar-btn {
   }
 
   .carat-item .carat-outer {
-    width: 85px;
-    height: 10%;
-    margin: 12px auto;
+    width: 26%;
+    height: 60px;
+    margin: 8px;
   }
-
   .carat-item {
-    margin: 0 25px;
+    margin: 0 14px;
   }
 }
 
@@ -921,4 +933,85 @@ button#toggle-sidebar-btn {
 
 .bouncing-loader>div:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+.main-filter {
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: end;
+}
+
+.main-filter .filter-btn {
+  padding: 4px;
+  margin-right: 15px;
+  background: #72b3c3;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: block;
+}
+.filter-section .input-checkbox {
+	display: flex;
+	flex-wrap: wrap;
+}
+.filter-section label{
+  font-weight: 700;
+}
+.filter-section .input-checkbox .input {
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 15%;
+}
+
+
+
+.multiple_filter_btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.main-filter button{
+  padding: 0 5px;
+  margin-left: 10px;
+  background: #1a6085;
+}
+.main-filter button span {
+	font-size: 14px;
+	font-weight: 600;
+  color: #ffff;
+}
+.main-filter button span svg {
+	color:#e1e1e1;
+  font-size: 14px;
+}
+@media(max-width:479px){
+  .filter-section .input-checkbox .input {
+    width: auto;
+}
+}
+
+.daimond-card .card-item .image-block .share_list {
+	right: 0;
+	top: 20%;
+	position: absolute;
+	right: 12px;
+	z-index:auto;
+	top: 6px;
+	color: #1d4c70;
+	background: #e1e1e1;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	line-height: 10px;
 }

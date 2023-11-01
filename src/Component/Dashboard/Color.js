@@ -6,7 +6,7 @@ import Footer from '../../Footer';
 function Color() {
   const [colorsData, setColorsData] = useState([]);
 
-  const { apiData } = useContext(apiContext);
+  const { apiData ,fetchData} = useContext(apiContext);
 
 
   const colordisc = {
@@ -19,6 +19,7 @@ function Color() {
   }
 
   useEffect(() => {
+    fetchData();
     const colorCounts = apiData.reduce((acc, item) => {
       acc[item.color] = (acc[item.color] || 0) + 1;
       return acc;
@@ -39,7 +40,7 @@ function Color() {
     });
     const filteredColorsData = colorsData.filter((data) => data !== null);
     setColorsData(filteredColorsData);
-  }, [apiData])
+  }, [])
 
   return (
     <div>

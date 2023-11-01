@@ -2,37 +2,40 @@ import React, { useContext, useEffect, useState } from 'react'
 import Leftmenu from '../../Leftmenu';
 import ModalComponent from '../../utils/ModalComponent'
 import ImageTag from '../ImageTag';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { apiContext } from '../../context/ApiState';
 import Footer from '../../Footer';
 import json from "../../shapedisc.json"
 import MultiFilterComponent from './Example';
-import Sharesocial from '../Sharesocial';
-import { Button, Modal } from 'antd';
 
-function Daimondcard() {
+function ShareListPage() {
 
-
+ console.log('fwefwefwfewf')
   const [Daimonddata, setDaimonddata] = useState([]);
   const [open, setOpen] = useState(false);
-  const [openShare, setOpenShare] = useState(false);
   const [modalData, setModalData] = useState({});
   const [filterData, setFilterData] = useState([]);
-  const [url, setUrl] = useState("");
-
-
 
 
   const shapedisc = json.shapedisc
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const category = searchParams.get('category');
-  const value = searchParams.get('value');
+  const shapeURL = searchParams.get('shape');
+  const colorURL = searchParams.get('color');
+  const clariyURl = searchParams.get('clarity');
+  const sizeURL = searchParams.get('size');
 
-  const shape = category == 'shape' ? [value] : []
-  const color = category == 'color' ? [value] : []
-  const size = category == 'size' ? [value] : []
+  const shape = shapeURL ? shapeURL.split(',') : [];
+  const color = colorURL ? colorURL.split(',') : [];
+  const clarity = clariyURl ? clariyURl.split(',') : [];
+  const size = sizeURL ? sizeURL.split(',') : [];
+
+  console.log("url",shape,color,clarity,size);
+
+//   const shape = category == 'shape' ? [value] : []
+//   const color = category == 'color' ?[value]:[]
+//   const size = category == 'size' ?[value]:[]
   const { apiData, fetchData } = useContext(apiContext)
 
 
@@ -41,35 +44,28 @@ function Daimondcard() {
     setModalData(item)
   }
 
-  const handleOpen=(url)=>{
-    setOpenShare(true)
-        setUrl(`${window.location.origin}/daimond?id=${url}`)
-  }
+//   useEffect(() => {
+//     if (category && value) {
+//       if (category != 'size') {
+//         let filteredData = value == "other" ? apiData.filter((item) => !["HT", "OV", "RAD", "PEAR", "EM", "MQ", "CMB", "AC", "CB", "RD"].includes(item[category])) :
+//           apiData.filter((item) => item[category] == value);
+//         setDaimonddata(filteredData);
+//       } else {
+//         const max = value.split("-")[1]
+//         const min = value.split("-")[0]
 
-  useEffect(() => {
-    if (category && value) {
-      if (category != 'size') {
-        let filteredData = value == "other" ? apiData.filter((item) => !["HT", "OV", "RAD", "PEAR", "EM", "MQ", "CMB", "AC", "CB", "RD"].includes(item[category])) :
-          apiData.filter((item) => item[category] == value);
-        setDaimonddata(filteredData);
-      } else {
-        console.log(value);
-        const max = value.split("-")[1]
-        const min = value.split("-")[0]
+//         let filteredData = apiData.filter((item) => item[category] > min && item[category] <= max);
+//         setDaimonddata(filteredData);
+//       }
 
-        let filteredData = apiData.filter((item) => item[category] > min && item[category] <= max);
-        setDaimonddata(filteredData);
-      }
-
-    } else {
-      setDaimonddata(apiData)
-    }
-  }, [apiData]);
+//     } else {
+//       setDaimonddata(apiData)
+//     }
+//   }, [apiData]);
 
   useEffect(() => {
     fetchData();
   }, [])
-
 
 
 
@@ -79,7 +75,7 @@ function Daimondcard() {
       <div className="p-4 mb-[150px] sm:ml-64 ">
         <div className="main-filter">
 
-          <MultiFilterComponent setDaimonddata={setDaimonddata} shape={shape} color={color} />
+          <MultiFilterComponent setDaimonddata={setDaimonddata} shape={shape} size={size} color={color} clarity={clarity} />
         </div>
         <div className="main-card-outer block w-full bg-[#fff]">
           <div className="main-card-inner mx-[-15px]">
@@ -99,13 +95,9 @@ function Daimondcard() {
                             </div>
                           </div>
                           <div className="card-item">
-                            <div className="image-block relative">
+                            <div className="image-block">
                               {/* <img src={item.image_url} alt="" onError="assets/image/noimage.png"/> */}
                               <ImageTag image={item.image_url} />
-                              <button className='share_list' onClick={()=>handleOpen(item.stock_num)}>
-                                <i class="fas fa-share"></i>
-                              </button>
-
                             </div>
                             <div className="card-bottom mt-[10px]">
                               <div className="top-item flex justify-start mb-[10px]">
@@ -147,7 +139,6 @@ function Daimondcard() {
                     )
                   })
                 }
-                <Sharesocial {...{ openShare, setOpenShare, url }} />
                 <ModalComponent open={open} setOpen={setOpen} item={modalData} />
 
               </div>
@@ -163,4 +154,4 @@ function Daimondcard() {
 
 
 
-export default Daimondcard;
+export default ShareListPage;

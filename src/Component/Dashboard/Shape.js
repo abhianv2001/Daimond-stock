@@ -22,8 +22,8 @@ function Shape() {
     "CB": { shape: "Cubic", image: 'assets/image/Cubic.png' },
     "RD": { shape: "Round", image: 'assets/image/Round.png' },
     // "PR": { shape: "Princess ", image: 'assets/image/princess.png' },
-    "Other": { shape: "Other", image: 'assets/image/no-imag.png' }
-  }
+    "Other": { shape: "Other", image: 'assets/image/no_image.png' }
+  } 
 
   useEffect(() => {
     const shapeCounts = apiData.reduce((acc, item) => {
